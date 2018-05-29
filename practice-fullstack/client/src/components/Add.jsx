@@ -16,7 +16,8 @@ class Add extends React.Component {
     });
   }
 
-  add() {
+  add(e) {
+    e.target.parentNode.children[1].value = '';
     this.props.onAdd(this.state.term);
   }
 

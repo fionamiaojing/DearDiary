@@ -16,7 +16,8 @@ class Search extends React.Component {
     });
   }
 
-  search() {
+  search(e) {
+    e.target.parentNode.children[0].value = '';
     this.props.onSearch(this.state.term);
   }
 

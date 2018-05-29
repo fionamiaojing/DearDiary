@@ -49,9 +49,9 @@ let insertDataIntoDataBase = (
     title: title,
     runtime: runtime,
     release_date: release_date,
-    vote_average: vote_average
+    vote_average: vote_average,
+    watched: false
   };
-  console.log(data);
   db.save(data, callback);
 };
 

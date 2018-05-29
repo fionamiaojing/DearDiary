@@ -7,7 +7,8 @@ let movieSchema = mongoose.Schema({
   title: String,
   runtime: Number,
   release_date: Date,
-  vote_average: Number
+  vote_average: Number,
+  watched: Boolean
 });
 
 let Movie = mongoose.model('Movie', movieSchema);
@@ -36,12 +37,19 @@ let find = (callback) => {
   });
 };
 
-let update = (data) => {
+let update = (id, watched, callback) => {
   // var query = Movie.where({movieid: data.movieid});
-  // query.findOneAndUpdate();
+  Movie.findOneAndUpdate({_id: id}, {watched: !watched}, (err, result) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, result);
+    }
+  });
 };
 
 module.exports = {
   save: save,
   find: find,
+  update: update
 };

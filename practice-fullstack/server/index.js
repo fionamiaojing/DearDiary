@@ -21,6 +21,17 @@ app.post('/movies', function (req, res) {
   });
 });
 
+app.post('/toggle', function (req, res) {
+  db.update(req.body.id, req.body.watched, (err, result) => {
+    if (err) {
+      res.send("NOT FOUND");
+    } else {
+      res.send("UPDATED");
+    }
+  });
+});
+
+
 app.get('/movies', function (req, res) {
   // TODO - your code here!
   db.find((err, results) => {
