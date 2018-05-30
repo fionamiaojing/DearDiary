@@ -1,5 +1,5 @@
 const request = require('request');
-const config = require('../config.js');
+// const config = require('../config.js');
 const db = require('../database/index.js');
 
 let getMovieIDByUserInput = (input, callback) => {
@@ -12,7 +12,7 @@ let getMovieIDByUserInput = (input, callback) => {
       'User-Agent': 'request',
     },
     qs: {
-      'api_key': config.TOKEN,
+      'api_key': process.env.TMDB_API || require('../config.js').TOKEN,
       'query': input
     }
   };
@@ -31,7 +31,7 @@ let getMovieDetailByMovieID = (movieID, callback) => {
       'User-Agent': 'request',
     },
     qs: {
-      'api_key': config.TOKEN,
+      'api_key': process.env.TMDB_API || require('../config.js').TOKEN,
     }
   };
 
