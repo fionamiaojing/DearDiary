@@ -6,9 +6,17 @@ import MoodScreen from './components/mood';
 import IdeaScreen from './components/idea';
 import StoryScreen from './components/story';
 import PictureScreen from './components/pictures';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import allReducers from './reducer/index';
+import thunk from 'redux-thunk';
 
+const store = createStore(
+  allReducers,
+  applyMiddleware(thunk)
+);
 
-const App = createStackNavigator({
+const Navigator = createStackNavigator({
   Home: { screen: HomeScreen },
   Diary: { screen: DiaryScreen },
   Mood: { screen: MoodScreen },
@@ -17,6 +25,14 @@ const App = createStackNavigator({
   Picture: {screen: PictureScreen }
 });
 
-export default App;
+
+
+export default function App() {
+  return (
+    <Provider store={store}>
+            <Navigator />
+    </Provider>
+  ); 
+}
 
 

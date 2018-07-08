@@ -5,7 +5,7 @@ import { StyleSheet, Button, Text, View } from 'react-native';
 export default class DiaryScreen extends React.Component {
   static navigationOptions = {
     title: 'My Dear Diary Today',
-    headerTitleStyle: { color: '#ffbbbb' },
+    headerTitleStyle: { color: '#f7a5a5' },
   };
 
   
@@ -15,12 +15,11 @@ export default class DiaryScreen extends React.Component {
     const timestamp = navigation.getParam('data')
 
     return (
-
       <View style={{flex: 1, flexDirection: 'column'}}>
         <View style={{flex: 1, flexDirection: 'row'}}>
           <View style={styles.content1}>
               <Button 
-                color='#bad7df'
+                color='#a5d7e5'
                 title="Dear Mood..."
                 onPress={
                     () => this.props.navigation.navigate('Mood', {
@@ -55,7 +54,7 @@ export default class DiaryScreen extends React.Component {
           </View>
           <View style={styles.content1}>
             <Button 
-              color='#bad7df'
+              color='#a5d7e5'
               title="Dear Picture..."
               onPress={
                   () => this.props.navigation.navigate('Picture', {

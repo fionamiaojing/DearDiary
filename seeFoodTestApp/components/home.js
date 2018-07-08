@@ -5,7 +5,7 @@ import { createStackNavigator } from 'react-navigation';
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'My Dear Diary',
-        headerStyle: { backgroundColor: '#ffbbbb' },
+        headerStyle: { backgroundColor: '#f7a5a5' },
         headerTitleStyle: { color: 'white' },
     }
 

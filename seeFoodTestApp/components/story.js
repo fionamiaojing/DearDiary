@@ -5,7 +5,7 @@ import { StyleSheet, Button, Text, View } from 'react-native';
 export default class StoryScreen extends React.Component {
   static navigationOptions = {
     title: 'Dear Story...',
-    headerTitleStyle: { color: '#ffbbbb' },
+    headerTitleStyle: { color: '#f7a5a5' },
   };
 
   

@@ -5,10 +5,9 @@ import { StyleSheet, Button, Text, View } from 'react-native';
 export default class PictureScreen extends React.Component {
   static navigationOptions = {
     title: 'Picture for the Day...',
-    headerTitleStyle: { color: '#ffbbbb' },
+    headerTitleStyle: { color: '#f7a5a5' },
   };
 
-  
   
   render() {
     const { navigation } = this.props;
