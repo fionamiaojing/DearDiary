@@ -39,7 +39,8 @@ class IdeaScreen extends React.Component {
         const swipeBtns = [
             {
               text: 'Delete',
-              backgroundColor: 'red',
+              backgroundColor: 'white',
+              color: '#fa4659',
               onPress: () => {
                   this.props.deleteIdea(idea.id) 
             }
@@ -165,15 +166,18 @@ const styles = StyleSheet.create({
         color: '#d7f8f7',
         marginLeft: 10,
     },
+    modalTitle: {
+        alignItems:'center',
+    },
     modalView: {
         flex: 1,
-        alignItems:'center',
         justifyContent:'center',
         backgroundColor: '#cdd5e0'
     },
     modalContent: {
         marginTop: 20,
         marginBottom: 20,
+        marginHorizontal: 10,
         backgroundColor: '#89a4c7',
         paddingHorizontal: 20,
         height: 100,
@@ -185,7 +189,9 @@ const styles = StyleSheet.create({
     },
     modalButton: {
         flexDirection: 'row',
+        alignItems:'center',
         justifyContent: 'space-between',
+        marginHorizontal: 20
     },
     botton: {
         backgroundColor: '#f5b17b',

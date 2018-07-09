@@ -180,6 +180,24 @@ export const changeStory = (story) => {
     };
 };
 
+export const enterUserID = (userid) => {
+    return {
+        type: 'ENTER_USERID',
+        payload: {
+            userid: userid
+        }
+    };
+};
+
+export const enterPassword = (password) => {
+    return {
+        type: 'ENTER_PASSWORD',
+        payload: {
+            password: password
+        }
+    };
+};
+
 const url1 = 'http://10.7.77.106:3000';
 //const url1 = 'http://192.168.1.11:3000';
 const url = 'https://deardiary-209622.appspot.com';

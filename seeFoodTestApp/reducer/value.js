@@ -11,6 +11,20 @@ export const date = () => {
     return new Date().toDateString();
 };
 
-export const userid = () => {
-    return 'fiona';
+export const userid = (state='Fiona', action) => {
+    switch (action.type) {
+        case 'ENTER_USERID':
+            return action.payload.userid;
+        default:
+            return state;
+    }
+};
+
+export const password = (state='123456', action) => {
+    switch (action.type) {
+        case 'ENTER_PASSWORD':
+            return action.payload.password;
+        default:
+            return state;
+    }
 };

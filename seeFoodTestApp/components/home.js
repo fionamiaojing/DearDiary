@@ -1,16 +1,25 @@
 import React from 'react';
-import { StyleSheet, Button, TouchableOpacity, Text, View } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
+import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
+import { Button } from 'react-native-elements';
 
 export default class HomeScreen extends React.Component {
-    static navigationOptions = {
-        title: 'My Dear Diary',
-        headerStyle: { backgroundColor: '#f7a5a5' },
-        headerTitleStyle: { color: 'white' },
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: 'Dear Diary',
+            headerStyle: { backgroundColor: '#f7a5a5' },
+            headerTitleStyle: { color: 'white' },
+            headerRight: (
+                <Button
+                    raised
+                    icon={{ name: 'date-range', size: 23}}
+                    backgroundColor='transparent'
+                    onPress={() => {navigation.navigate('Calendar')}}
+                />
+            )
+        }
     }
 
     render() {
-        const { navigate } = this.props.navigation;
         return (
         <View style={{flex: 1}}>
             <View style={styles.navigator}>
@@ -24,9 +33,16 @@ export default class HomeScreen extends React.Component {
             </View>
             
             <View style={styles.content}>
+                <View style={{
+                    backgroundColor: 'white',
+                    width: 2000,
+                }}>
                 <Button 
-                    color='#294a66'
-                    title="Dear Diary..."
+                    color='#fbafaf'
+                    title='Dear Diary...'
+                    backgroundColor='transparent'
+                    fontSize={40}
+                    fontWeight='bold'
                     onPress={
                         () => this.props.navigation.navigate('Diary', {
                             userid: 'fiona',
@@ -34,6 +50,7 @@ export default class HomeScreen extends React.Component {
                         })
                     }
                 />
+                </View>
             </View>
         </View>
         );
@@ -41,25 +58,25 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  navigator: {
-    flex: 1,
-    backgroundColor: '#fcd2c2'
-  },
-//   navigateText: {
-//     fontSize: 10,
-//     fontWeight: 'bold',
-//     color: 'white',
-//   },
-  content: {
-    flex: 16, 
-    backgroundColor: '#ffe6eb',
-    flexDirection:'row',
-    alignItems:'center',
-    justifyContent:'center',
-  },
-  contentText: {
-    fontSize: 40,
-    fontWeight: 'bold',
-    color: 'white',
-  }
+    navigator: {
+        flex: 1,
+        backgroundColor: '#fcd2c2'
+    },
+    //   navigateText: {
+    //     fontSize: 10,
+    //     fontWeight: 'bold',
+    //     color: 'white',
+    //   },
+    content: {
+        flex: 16, 
+        backgroundColor: '#ffe6eb',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center',
+    },
+    contentText: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        color: 'white',
+    }
 });

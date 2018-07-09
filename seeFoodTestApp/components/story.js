@@ -12,7 +12,7 @@ class StoryScreen extends React.Component {
             headerRight: (
                 <Button
                     onPress={() => { navigation.state.params.postStory() }}
-                    title="POST"
+                    title="SAVE"
                     color="#f7a5a5"
                 />
             ),
@@ -32,7 +32,8 @@ class StoryScreen extends React.Component {
             'Story Saved',
             '',
             [
-              {text: 'OK', onPress: () => console.log('OK Pressed')}
+              {text: 'Stay', onPress: () => console.log('pressed stay')},
+              {text: 'Leave', onPress: () => this.props.navigation.navigate('Diary')}
             ],
             { cancelable: false }
         )

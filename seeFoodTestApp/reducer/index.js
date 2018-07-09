@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { ideas, story, show } from './items';
-import { moodvalue, date, userid } from './value';
+import { moodvalue, date, userid, password } from './value';
 
 const allReducers = combineReducers({
     ideas: ideas,
@@ -8,7 +8,8 @@ const allReducers = combineReducers({
     moodvalue: moodvalue,
     show: show,
     date: date,
-    userid: userid
+    userid: userid,
+    password: password
 });
 
 export default allReducers;

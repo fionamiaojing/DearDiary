@@ -1,5 +1,7 @@
 import React from 'react';
+import LoginScreen from './components/login';
 import HomeScreen from './components/home';
+import CalendarScreen from './components/calendar';
 import DiaryScreen from './components/diary';
 import { createStackNavigator } from 'react-navigation';
 import MoodScreen from './components/mood';
@@ -17,7 +19,9 @@ const store = createStore(
 );
 
 const Navigator = createStackNavigator({
+  Login: { screen: LoginScreen},
   Home: { screen: HomeScreen },
+  Calendar: { screen: CalendarScreen },
   Diary: { screen: DiaryScreen },
   Mood: { screen: MoodScreen },
   Idea : { screen: IdeaScreen },
