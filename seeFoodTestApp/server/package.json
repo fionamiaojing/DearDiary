@@ -1,0 +1,22 @@
+{
+  "name": "seeFoodTestApp",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "8.9.4"
+  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "prestart": "node ./getEnv",
+    "start": "node ./server.js"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^1.7.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.1"
+  }
+}
