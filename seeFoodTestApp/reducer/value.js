@@ -10,3 +10,7 @@ export const moodvalue = (state = 0.5, action) => {
 export const date = () => {
     return new Date().toDateString();
 };
+
+export const userid = () => {
+    return 'fiona';
+};

@@ -8,26 +8,24 @@ export const ideas = (state = [], action) => {
             ];
         case 'DELETE_IDEA':
             return state.filter(
-                (obj) => obj.key !== action.payload.idea
+                (obj) => obj.id !== action.payload.ideaid
             );
         case 'FETCH_IDEAS':
-            console.log(action.payload.ideas);
             return action.payload.ideas.map(
-                (idea) => {
-                    return {key: idea};
+                (ele) => {
+                    return {
+                        id: ele[0],
+                        key: ele[1]};
                 });
         default:
             return state;
     }
 };
 
-export const story = (state = [], action) => {
+export const story = (state = '', action) => {
     switch (action.type) {
-        case 'ADD_Story':
-        return [
-            ...state,
-            {key: action.payload.story}
-        ];
+        case 'CHANGE_STORY':
+            return action.payload.story;
         default:
             return state;
     }
