@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Button, Text, View } from 'react-native';
 
-
 export default class DiaryScreen extends React.Component {
   static navigationOptions = {
     title: 'My Dear Diary Today',
@@ -89,3 +88,24 @@ const styles = StyleSheet.create({
     borderRadius: 1
   },
 });
+
+
+//can fetch all data here or in the child components
+// import { bindActionCreators } from 'redux';
+// import { connect } from 'react-redux';
+// import { fetchAllIdeas } from '../action/index';
+// const mapStateToProps = (state) => {
+//   return {
+//   };
+// };
+
+// const matchDispatchToProps = (dispatch) => {
+//   return bindActionCreators({ 
+//       fetchAllIdeas: fetchAllIdeas,
+//   }, dispatch);
+// };
+
+// export default connect(
+//   mapStateToProps,
+//   matchDispatchToProps
+// )(DiaryScreen);

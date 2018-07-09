@@ -6,3 +6,7 @@ export const moodvalue = (state = 0.5, action) => {
             return state;
     }
 };
+
+export const date = () => {
+    return new Date().toDateString();
+};

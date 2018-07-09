@@ -1,21 +1,36 @@
 import React from 'react';
-import { StyleSheet, Button, Text, View } from 'react-native';
+import { StyleSheet, LeftButton, Button, Text, View } from 'react-native';
 import Slider from 'react-native-slider';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { changeMood } from '../action/index';
+import { changeMood, fetchMood, saveMood } from '../action/index';
 
 class MoodScreen extends React.Component {
-  static navigationOptions = {
-    title: 'I Feel Like...',
-    headerTitleStyle: { color: '#f7a5a5' },
+    static navigationOptions = ({ navigation }) => {
+        return { 
+            title: 'I Feel Like...',
+            headerTitleStyle: { color: '#f7a5a5' },
+            headerLeft: (
+                <Button
+                    onPress={() => navigation.state.params.saveMood()}
+                    title="Back"
+                    color='#f7a5a5'
+                />
+            ),
+        }
+    }
+
+  componentDidMount() {
+      this.props.fetchMood()
+      this.props.navigation.setParams({
+          saveMood: this.saveMood
+      })
   }
 
-//   constructor(props) {
-//       this.changeBackgroundColor = this.changeBackgroundColor.bind(this);
-//       this.onMoodChange = this.onMoodChange.bind(this);
-//       this.changeMoodText = this.changeMoodText.bind(this);
-//   }
+  saveMood = () => {
+      this.props.navigation.navigate('Diary');
+      this.props.saveMood(this.props.moodvalue)
+  }
 
   changeBackgroundColor(value) {
     let color = ''
@@ -60,11 +75,11 @@ class MoodScreen extends React.Component {
         }}>
             <Text style={styles.greeting}>
                 Good Morning!
-                Today will be better than yesterday!
+                Today will be better than yesterday
             </Text>
             <View style={styles.slider}>
                 <Text style={styles.slideTitle}>
-                    Tell me about your feelings Today
+                    My feelings Today...
                 </Text>
                 <Slider
                     minimumTrackTintColor = '#878ecd'
@@ -94,7 +109,9 @@ const mapStateToProps = (state) => {
 
 const matchDispatchToProps = (dispatch) => {
     return bindActionCreators({ 
-        changeMood: changeMood
+        changeMood: changeMood,
+        fetchMood: fetchMood,
+        saveMood: saveMood
     }, dispatch);
 };
 
@@ -110,13 +127,13 @@ var styles = StyleSheet.create({
         marginLeft: 20,
         marginRight: 20,
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold',
         color: '#9f609c'
     },
     slideTitle: {
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold',
         color: '#9f609c'
     },
@@ -129,7 +146,7 @@ var styles = StyleSheet.create({
     },
     mood: {
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 25,
         fontWeight: 'bold',
         color: '#9f609c'
     }

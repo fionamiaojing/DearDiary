@@ -11,7 +11,11 @@ export const ideas = (state = [], action) => {
                 (obj) => obj.key !== action.payload.idea
             );
         case 'FETCH_IDEAS':
-            return action.payload.ideas;
+            console.log(action.payload.ideas);
+            return action.payload.ideas.map(
+                (idea) => {
+                    return {key: idea};
+                });
         default:
             return state;
     }
@@ -20,9 +24,22 @@ export const ideas = (state = [], action) => {
 export const story = (state = [], action) => {
     switch (action.type) {
         case 'ADD_Story':
-            return action.payload.story;
+        return [
+            ...state,
+            {key: action.payload.story}
+        ];
         default:
             return state;
     }
 };
+
+export const show = (state = false, action) => {
+    switch (action.type) {
+        case 'TOGGLE_SHOW':
+            return action.payload.bool;
+        default:
+            return state;
+    }
+};
+
 

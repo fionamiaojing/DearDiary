@@ -34,6 +34,22 @@ export const fetchAllIdeas = (userid, date) => {
     };
 };
 
+export const postNewIdea = (userid, data, idea) => {
+    //post to remote
+    return function(dispatch) {
+        dispatch(addIdeas(idea));
+    };
+};
+
+export const toggleShow = (bool) => {
+    return {
+        type: 'TOGGLE_SHOW',
+        payload: {
+            bool: bool
+        }
+    };
+};
+
 export const changeMood = (value) => {
     return {
         type: 'CHANGE_MOOD',
@@ -43,8 +59,23 @@ export const changeMood = (value) => {
     };
 };
 
+export const fetchMood = () => {
+    return function(dispatch) {
+        dispatch(changeMood(0.5));
+    };
+};
+
+//can also directly post to server in components
+export const saveMood = (value) => {
+    //post to server
+    return function(dispatch) {
+        dispatch(changeMood(value));
+    };
+};
+
+
 const defaultidea = [
-    {key: 'learn aaa'},
-    {key: 'learn bbb'},
-    {key: 'learn ccc'}
+    'learn aaa',
+    'learn bbb',
+    'learn ccc'
 ];
