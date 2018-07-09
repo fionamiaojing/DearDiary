@@ -21,15 +21,19 @@ class MoodScreen extends React.Component {
     }
 
   componentDidMount() {
-      this.props.fetchMood()
+      this.props.fetchMood(this.props.userid, this.props.date)
       this.props.navigation.setParams({
           saveMood: this.saveMood
       })
   }
 
   saveMood = () => {
-      this.props.navigation.navigate('Diary');
-      this.props.saveMood(this.props.moodvalue)
+        this.props.navigation.navigate('Diary');
+        this.props.saveMood(
+            this.props.userid, 
+            this.props.date, 
+            this.props.moodvalue
+        )
   }
 
   changeBackgroundColor(value) {
@@ -103,7 +107,9 @@ class MoodScreen extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        moodvalue: state.moodvalue
+        moodvalue: state.moodvalue,
+        date: state.date,
+        userid: state.userid
     };
 };
 

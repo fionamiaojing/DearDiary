@@ -4,7 +4,7 @@ import { StyleSheet, TouchableHighlight, FlatList, Modal,
 import Swipeout from 'react-native-swipeout';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { postNewIdea, deleteIdeas, fetchAllIdeas, toggleShow } from '../action/index';
+import { postNewIdea, deleteIdea, fetchAllIdeas, toggleShow } from '../action/index';
 
 
 
@@ -25,7 +25,7 @@ class IdeaScreen extends React.Component {
     };
 
     componentDidMount() {
-        this.props.fetchAllIdeas('fiona', this.props.date);
+        this.props.fetchAllIdeas(this.props.userid, this.props.date);
         this.props.navigation.setParams({ 
             toggleModal: this.toggleModal.bind(this)
         });
@@ -40,7 +40,9 @@ class IdeaScreen extends React.Component {
             {
               text: 'Delete',
               backgroundColor: 'red',
-              onPress: () => { this.props.deleteIdeas(idea) }
+              onPress: () => {
+                  this.props.deleteIdea(idea.id) 
+            }
            },
         ];
 
@@ -50,7 +52,7 @@ class IdeaScreen extends React.Component {
             >
                 <View style={styles.line}>
                     <Text style={styles.text}>
-                        {idea}
+                        {idea.key}
                     </Text>
                 </View>
             </Swipeout>
@@ -63,7 +65,7 @@ class IdeaScreen extends React.Component {
                 <FlatList
                     data={this.props.ideas}
                     renderItem={
-                        ({item}) => this.renderItem(item.key)
+                        ({item}) => this.renderItem(item)
                     }
                 />
                 <Modal
@@ -95,7 +97,7 @@ class IdeaScreen extends React.Component {
                                     onPress={() => {
                                         this.props.toggleShow(!this.props.show);
                                         this.props.postNewIdea(
-                                            'fiona',
+                                            this.props.userid,
                                             this.props.date,
                                             newIdea
                                         )
@@ -128,14 +130,15 @@ const mapStateToProps = (state) => {
     return {
         ideas: state.ideas,
         show: state.show,
-        date: state.date
+        date: state.date,
+        userid: state.userid
     };
 };
 
 const matchDispatchToProps = (dispatch) => {
     return bindActionCreators({ 
         postNewIdea: postNewIdea,
-        deleteIdeas: deleteIdeas,
+        deleteIdea: deleteIdea,
         fetchAllIdeas: fetchAllIdeas,
         toggleShow: toggleShow
     }, dispatch);
