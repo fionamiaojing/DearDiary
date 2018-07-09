@@ -8,14 +8,31 @@ export const addIdeas = (idea) => {
     };
 };
 
-export const deleteIdeas = (idea) => {
+export const deleteIdeas = (ideaid) => {
     return {
         type: 'DELETE_IDEA',
         payload: {
-            idea: idea
+            ideaid: ideaid
         }
     };
 };
+
+export const deleteIdea = (ideaid) => {
+    //dispatch fetchIdeas
+    //set data
+    return function(dispatch) {
+        fetch(`${url}/ideas/${ideaid}`, {
+            method: 'DELETE'
+        })
+          .then(
+              dispatch(deleteIdeas(ideaid))
+        )
+          .catch((error) => {
+            throw error;
+        });
+    };
+};
+
 
 export const fetchIdeas = (ideas) => {
     return {
@@ -30,14 +47,37 @@ export const fetchAllIdeas = (userid, date) => {
     //dispatch fetchIdeas
     //set data
     return function(dispatch) {
-        dispatch(fetchIdeas(defaultidea));
+        fetch(`${url}/ideas/${userid}/${date}`)
+          .then((response) => response.json())
+          .then((responseJson) => {
+              let ideas = responseJson.map((obj) => {
+                  return [obj._id, obj.idea];
+              });
+            dispatch(fetchIdeas(ideas));
+          })
+          .catch((error) => {
+            throw error;
+        });
     };
 };
 
-export const postNewIdea = (userid, data, idea) => {
-    //post to remote
+export const postNewIdea = (userid, date, idea) => {
     return function(dispatch) {
-        dispatch(addIdeas(idea));
+        fetch(`${url}/ideas/${userid}/${date}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify({
+                idea: idea,
+            }),
+        })
+          .then(
+              dispatch(addIdeas(idea))
+        )
+          .catch((error) => {
+            throw error;
+        });
     };
 };
 
@@ -59,23 +99,88 @@ export const changeMood = (value) => {
     };
 };
 
-export const fetchMood = () => {
+export const fetchMood = (userid, date) => {
     return function(dispatch) {
-        dispatch(changeMood(0.5));
+        fetch(`${url}/mood/${userid}/${date}`)
+          .then((response) => response.json())
+          .then((responseJson) => {
+            let moodvalue = responseJson.length > 0 ? 
+                responseJson[0].moodvalue : 0.5;
+            dispatch(changeMood(moodvalue));
+          })
+          .catch((error) => {
+            throw error;
+        });
     };
 };
 
 //can also directly post to server in components
-export const saveMood = (value) => {
-    //post to server
+export const saveMood = (userid, date, value) => {
     return function(dispatch) {
-        dispatch(changeMood(value));
+        fetch(`${url}/mood/${userid}/${date}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify({
+                value: value,
+            }),
+        })
+          .then(
+              dispatch(changeMood(value))
+        )
+          .catch((error) => {
+            throw error;
+        });
     };
 };
 
+export const fetchStory = (userid, date) => {
+    return function(dispatch) {
+        //need to change URL------------------------->
+        fetch(`${url1}/stories/${userid}/${date}`)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                //array
+                let story = responseJson.length === 0 ? '' : responseJson[0].story;
+                dispatch(changeStory(story));
+            })
+            .catch((error) => {
+                throw error;
+            });
+    };
+};
 
-const defaultidea = [
-    'learn aaa',
-    'learn bbb',
-    'learn ccc'
-];
+export const postStory = (userid, date, story) => {
+    return function(dispatch) {
+        fetch(`${url1}/stories/${userid}/${date}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json; charset=utf-8",
+            },
+            body: JSON.stringify({
+                story: story,
+            }),
+        })
+          .then(
+              dispatch(changeStory(story))
+        )
+          .catch((error) => {
+            throw error;
+        });
+    };
+};
+
+export const changeStory = (story) => {
+    return {
+        type: 'CHANGE_STORY',
+        payload: {
+            story: story
+        }
+    };
+};
+
+const url1 = 'http://10.7.77.106:3000';
+//const url1 = 'http://192.168.1.11:3000';
+const url = 'https://deardiary-209622.appspot.com';
+//`/mood/${userid}/${date}`
