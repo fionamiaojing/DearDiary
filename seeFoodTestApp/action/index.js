@@ -44,8 +44,6 @@ export const fetchIdeas = (ideas) => {
 };
 
 export const fetchAllIdeas = (userid, date) => {
-    //dispatch fetchIdeas
-    //set data
     return function(dispatch) {
         fetch(`${url}/ideas/${userid}/${date}`)
           .then((response) => response.json())
@@ -101,7 +99,7 @@ export const changeMood = (value) => {
 
 export const fetchMood = (userid, date) => {
     return function(dispatch) {
-        fetch(`${url1}/mood/${userid}/${date}`)
+        fetch(`${url}/mood/${userid}/${date}`)
           .then((response) => response.json())
           .then((responseJson) => {
             let moodvalue = responseJson.length > 0 ? 
@@ -114,7 +112,6 @@ export const fetchMood = (userid, date) => {
     };
 };
 
-//can also directly post to server in components
 export const saveMood = (userid, date, value) => {
     return function(dispatch) {
         fetch(`${url}/mood/${userid}/${date}`, {
@@ -137,8 +134,7 @@ export const saveMood = (userid, date, value) => {
 
 export const fetchStory = (userid, date) => {
     return function(dispatch) {
-        //need to change URL------------------------->
-        fetch(`${url1}/stories/${userid}/${date}`)
+        fetch(`${url}/stories/${userid}/${date}`)
             .then((response) => response.json())
             .then((responseJson) => {
                 //array
@@ -153,7 +149,7 @@ export const fetchStory = (userid, date) => {
 
 export const postStory = (userid, date, story) => {
     return function(dispatch) {
-        fetch(`${url1}/stories/${userid}/${date}`, {
+        fetch(`${url}/stories/${userid}/${date}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json; charset=utf-8",

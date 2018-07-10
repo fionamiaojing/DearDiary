@@ -83,7 +83,7 @@ class IdeaScreen extends React.Component {
                         <View style={styles.modalView}>
                             <View style={styles.modalTitle}>
                                 <Text style={{ fontSize: 30, color: '#ef7b7b'}}>
-                                    I have a new Idea...
+                                    I have a New Idea...
                                 </Text>
                             </View>
                             <View style={styles.modalContent}>

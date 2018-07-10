@@ -5,7 +5,10 @@
       "infoPlist": {
         "NSAppTransportSecurity": {
           "NSAllowsLocalNetworking": "yes"
-        }
+        },
+        "NSPhotoLibraryUsageDescription": "Need Access To Read Photo Library",
+        "NSCameraUsageDescription": "Need Access To Camera",
+        "NSPhotoLibraryAddUsageDescription": "Need Access To Write Photo Library"
       }
     }
   }

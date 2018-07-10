@@ -30,6 +30,7 @@
     "react-native-calendar-picker": "^5.19.0",
     "react-native-core-ml-image": "0.0.6",
     "react-native-elements": "^0.19.1",
+    "react-native-image-picker": "^0.26.10",
     "react-native-slider": "^0.11.0",
     "react-native-swipeout": "^2.3.3",
     "react-navigation": "^2.6.2",

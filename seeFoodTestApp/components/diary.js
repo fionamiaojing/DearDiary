@@ -17,9 +17,7 @@ export default class DiaryScreen extends React.Component {
                 color='#a5d7e5'
                 title="Dear Mood..."
                 onPress={
-                    () => this.props.navigation.navigate('Mood', {
-                        mood: 70,
-                    })
+                    () => this.props.navigation.navigate('Mood')
                 }
               />
           </View>
@@ -28,9 +26,7 @@ export default class DiaryScreen extends React.Component {
               color='#ffe2e2'
               title="Dear Idea..."
               onPress={
-                  () => this.props.navigation.navigate('Idea', {
-                      idea: ['bbb', 'aaa'],
-                  })
+                  () => this.props.navigation.navigate('Idea')
               }
             />
           </View>
@@ -41,9 +37,7 @@ export default class DiaryScreen extends React.Component {
               color='#ffe2e2'
               title="Dear Story..."
               onPress={
-                  () => this.props.navigation.navigate('Story', {
-                      story: ['story1', 'story2'],
-                  })
+                  () => this.props.navigation.navigate('Story')
               }
             />
           </View>
@@ -52,9 +46,7 @@ export default class DiaryScreen extends React.Component {
               color='#a5d7e5'
               title="Dear Picture..."
               onPress={
-                  () => this.props.navigation.navigate('Picture', {
-                      picture: ['url1', 'url2'],
-                  })
+                  () => this.props.navigation.navigate('Picture')
               }
             />
           </View>

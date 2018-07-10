@@ -16,7 +16,7 @@ export const date = (state=new Date().toDateString(), action) => {
     }
 };
 
-export const userid = (state='Fiona', action) => {
+export const userid = (state='fiona', action) => {
     switch (action.type) {
         case 'CHANGE_USERID':
             return action.payload.userid;
