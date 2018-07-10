@@ -101,7 +101,7 @@ export const changeMood = (value) => {
 
 export const fetchMood = (userid, date) => {
     return function(dispatch) {
-        fetch(`${url}/mood/${userid}/${date}`)
+        fetch(`${url1}/mood/${userid}/${date}`)
           .then((response) => response.json())
           .then((responseJson) => {
             let moodvalue = responseJson.length > 0 ? 
@@ -189,11 +189,38 @@ export const enterUserID = (userid) => {
     };
 };
 
+export const changeUserID = (userid) => {
+    return {
+        type: 'CHANGE_USERID',
+        payload: {
+            userid: userid
+        }
+    };
+};
+
 export const enterPassword = (password) => {
     return {
         type: 'ENTER_PASSWORD',
         payload: {
             password: password
+        }
+    };
+};
+
+export const changePassword = (password) => {
+    return {
+        type: 'CHANGE_PASSWORD',
+        payload: {
+            password: password
+        }
+    };
+};
+
+export const selectDate = (date) => {
+    return {
+        type: 'SELECT_DATE',
+        payload: {
+            date: date
         }
     };
 };
