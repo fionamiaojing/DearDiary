@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 import { Button } from 'react-native-elements';
 
+
 export default class HomeScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
         return {
@@ -21,17 +22,7 @@ export default class HomeScreen extends React.Component {
 
     render() {
         return (
-        <View style={{flex: 1}}>
-            <View style={styles.navigator}>
-                {/* <Button
-                    title="Create My Diary Today"
-                    onPress={
-                        () => this.props.navigation.navigate('Diary')
-                    }
-                    style={styles.navigateText}
-                /> */}
-            </View>
-            
+        <View style={styles.page}>
             <View style={styles.content}>
                 <View style={{
                     backgroundColor: 'white',
@@ -57,20 +48,16 @@ export default class HomeScreen extends React.Component {
     }
 }
 
+
+
 const styles = StyleSheet.create({
-    navigator: {
+    page: {
         flex: 1,
-        backgroundColor: '#fcd2c2'
-    },
-    //   navigateText: {
-    //     fontSize: 10,
-    //     fontWeight: 'bold',
-    //     color: 'white',
-    //   },
-    content: {
-        flex: 16, 
+        alignItems:'center',
+        justifyContent:'center',
         backgroundColor: '#ffe6eb',
-        flexDirection:'row',
+    },
+    content: {
         alignItems:'center',
         justifyContent:'center',
     },

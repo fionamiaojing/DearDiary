@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, LeftButton, Button, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Button } from 'react-native-elements';
 import Slider from 'react-native-slider';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -12,9 +13,14 @@ class MoodScreen extends React.Component {
             headerTitleStyle: { color: '#f7a5a5' },
             headerLeft: (
                 <Button
+                    raise
                     onPress={() => navigation.state.params.saveMood()}
-                    title="Back"
-                    color='#f7a5a5'
+                    backgroundColor='transparent'
+                    icon={{ 
+                        name: 'navigate-before', 
+                        size: 25, 
+                        color: '#f7a5a5'
+                    }}
                 />
             ),
         }

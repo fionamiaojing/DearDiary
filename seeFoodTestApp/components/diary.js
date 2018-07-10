@@ -9,10 +9,6 @@ export default class DiaryScreen extends React.Component {
 
   
   render() {
-    const { navigation } = this.props;
-    const uesrId = navigation.getParam('userid');
-    const timestamp = navigation.getParam('data')
-
     return (
       <View style={{flex: 1, flexDirection: 'column'}}>
         <View style={{flex: 1, flexDirection: 'row'}}>

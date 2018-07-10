@@ -3,7 +3,7 @@ import { StyleSheet, View, TextInput, Text } from 'react-native';
 import { Button, FormInput, FormLabel } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { enterUserID, enterPassword } from '../action/index';
+import { enterUserID, changeUserID, enterPassword, changePassword } from '../action/index';
 
 class LoginScreen extends React.Component {
     static navigationOptions = {
@@ -13,8 +13,8 @@ class LoginScreen extends React.Component {
     }
 
     login() {
-        this.props.enterUserID(userid);
-        this.props.enterPassword(password);
+        this.props.enterUserID(this.props.userid);
+        this.props.enterPassword(this.props.password);
         this.props.navigation.navigate('Home')
     }
 
@@ -36,14 +36,18 @@ class LoginScreen extends React.Component {
                     <FormInput
                         value={this.props.userid}
                         placeholder='Please enter username...'
-                        onChangeText={(text) => userid = text}
+                        onChangeText={
+                            (text) => this.props.changeUserID(text)
+                        }
                     />
                     <FormLabel>Password</FormLabel>
                     <FormInput
                         value={this.props.password}
                         placeholder='Please enter password..'
                         secureTextEntry={true}
-                        onChangeText={(text) => password = text}
+                        onChangeText={
+                            (text) => this.props.changePassword(text)
+                        }
                     />
                     <Button
                         large
@@ -57,8 +61,7 @@ class LoginScreen extends React.Component {
         );
     }
 }
-let userid = '';
-let password = '';
+
 
 const mapStateToProps = (state) => {
     return {
@@ -70,7 +73,9 @@ const mapStateToProps = (state) => {
 const matchDispatchToProps = (dispatch) => {
     return bindActionCreators({
         enterUserID: enterUserID,
-        enterPassword: enterPassword
+        enterPassword: enterPassword,
+        changeUserID: changeUserID,
+        changePassword: changePassword
     }, dispatch)
 }
 

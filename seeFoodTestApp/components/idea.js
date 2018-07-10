@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, TouchableHighlight, FlatList, Modal, 
-    Button, Text, TextInput, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
+    Text, TextInput, View, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { Button } from 'react-native-elements';
 import Swipeout from 'react-native-swipeout';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -17,8 +18,9 @@ class IdeaScreen extends React.Component {
             headerRight: (
                 <Button
                     onPress={() => { navigation.state.params.toggleModal() }}
-                    title="Add"
-                    color="#f7a5a5"
+                    raise
+                    icon = {{name: 'add', size: 25, color: '#f7a5a5'}}
+                    backgroundColor='transparent'
                 />
             ),
         }
@@ -62,7 +64,7 @@ class IdeaScreen extends React.Component {
   
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: '#f5eee6'}}>
                 <FlatList
                     data={this.props.ideas}
                     renderItem={
@@ -80,7 +82,7 @@ class IdeaScreen extends React.Component {
                     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                         <View style={styles.modalView}>
                             <View style={styles.modalTitle}>
-                                <Text style={{ fontSize: 30, color: '#4e709d'}}>
+                                <Text style={{ fontSize: 30, color: '#ef7b7b'}}>
                                     I have a new Idea...
                                 </Text>
                             </View>
@@ -155,7 +157,7 @@ export default connect(
 const styles = StyleSheet.create({
     line: {
         height: 60,
-        backgroundColor: '#F2C6B4',
+        backgroundColor: '#e6a4b4',
         borderBottomWidth: 1,
         borderColor: 'white',
         justifyContent:'center',
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#d7f8f7',
+        color: 'white',
         marginLeft: 10,
     },
     modalTitle: {
@@ -172,19 +174,19 @@ const styles = StyleSheet.create({
     modalView: {
         flex: 1,
         justifyContent:'center',
-        backgroundColor: '#cdd5e0'
+        backgroundColor: '#cdd5e0',
     },
     modalContent: {
         marginTop: 20,
         marginBottom: 20,
         marginHorizontal: 10,
-        backgroundColor: '#89a4c7',
+        backgroundColor: '#ffe2e2',
         paddingHorizontal: 20,
         height: 100,
     },
     textinput: {
         fontSize: 20, 
-        color: '#f5eee6',
+        color: '#91ceff',
         alignItems: 'stretch'
     },
     modalButton: {
@@ -200,7 +202,7 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 25,
         fontWeight: 'bold',
-        color: '#df8931'
+        color: '#ef7b7b'
     }
     
 });
