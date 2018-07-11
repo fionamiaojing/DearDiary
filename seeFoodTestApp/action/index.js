@@ -18,8 +18,6 @@ export const deleteIdeas = (ideaid) => {
 };
 
 export const deleteIdea = (ideaid) => {
-    //dispatch fetchIdeas
-    //set data
     return function(dispatch) {
         fetch(`${url}/ideas/${ideaid}`, {
             method: 'DELETE'
@@ -137,7 +135,6 @@ export const fetchStory = (userid, date) => {
         fetch(`${url}/stories/${userid}/${date}`)
             .then((response) => response.json())
             .then((responseJson) => {
-                //array
                 let story = responseJson.length === 0 ? '' : responseJson[0].story;
                 dispatch(changeStory(story));
             })
@@ -221,7 +218,7 @@ export const selectDate = (date) => {
     };
 };
 
-const url1 = 'http://10.7.77.106:3000';
+//const url1 = 'http://10.7.77.106:3000';
 //const url1 = 'http://192.168.1.11:3000';
 const url = 'https://deardiary-209622.appspot.com';
 //`/mood/${userid}/${date}`
