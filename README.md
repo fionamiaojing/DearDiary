@@ -9,12 +9,11 @@ A Diary App for writing stories, mark ideas, choose feelings for dialy use.
 1. [Development](#development)
 
 ## Demo
-
-[![Demo Doccou alpha](https://github.com/fionamiaojing/DearDiary/blob/solo/deardiary.gif)]
+<img src="https://github.com/fionamiaojing/DearDiary/blob/solo/deardiary.gif" width="375" height="812" />
 
 ## Usage
 
-> Some usage instructions
+> To Write Down Diary on your mobile phone
 
 
 ## Requirements
