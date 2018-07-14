@@ -31,7 +31,6 @@ export const deleteIdea = (ideaid) => {
     };
 };
 
-
 export const fetchIdeas = (ideas) => {
     return {
         type: 'FETCH_IDEAS',
