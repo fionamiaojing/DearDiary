@@ -10,7 +10,7 @@ A Diary App for writing stories, mark ideas, choose feelings for dialy use.
 
 ## Demo
 
-[![Demo Doccou alpha](http://xxx.gif)]
+[![Demo Doccou alpha](https://github.com/fionamiaojing/DearDiary/blob/solo/deardiary.gif)]
 
 ## Usage
 
